@@ -31,13 +31,13 @@ def main():
         print(f'Similarity between {in_file} and {imgfilename} is %.4f' % sim)
 
 
-THRESHOLD = 0.6 # 80%sim
+THRESHOLD = 0.6
 def main2():
     pth = 'BigTests'
-    fldrs = [ os.path.join(pth, f) for f in os.listdir(pth) ] # BigTests/osdi23jf4
+    fldrs = [ os.path.join(pth, f) for f in os.listdir(pth) ]
 
     for foldername in fldrs:
-        li = os.listdir(foldername) # [folder* ,check*.png]
+        li = os.listdir(foldername)
         fldrs2 = [ os.path.join(foldername, x) for x in li ]
         chkimg = list(filter(lambda x: '.jpg' in x, fldrs2))[0]
         im = cv2.imread(chkimg)
@@ -50,6 +50,7 @@ def main2():
                         if get_hist_sim(im, im2) > THRESHOLD:
                             print(f'Removing {imm}')
                             try:
+                                # hardcoded as of now
                                 shutil.move(imm, './toremove')
                             except Exception as e:
                                 os.system('del /Q toremove')

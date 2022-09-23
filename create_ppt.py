@@ -9,6 +9,7 @@ from pptx import Presentation
 
 prs = Presentation()
 
+# WIP
 pth = './theframes'
 blank_layout = prs.slide_layouts[6]
 pics = os.listdir(pth)
